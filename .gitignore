@@ -1,0 +1,16 @@
+# JetBrains PyCharm settings
+.idea/
+media/
+.idea
+__pycache__/*
+__pycache__*
+__pycache__
+workspace.xml
+
+# database stuffs
+db.sqlite3
+db.sqlite3/
+*.sqlite3
+.env
+.venv/
+venv/

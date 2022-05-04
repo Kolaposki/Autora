@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+    <section class="contact_section layout_padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form_container">
+                        <div class="heading_container ">
+                            <h2>
+                                Login to Autora
+                            </h2>
+                        </div>
+                        <form method="post">
+                            <div class="text-center auth-errors" style="margin-top: 5px;margin-bottom: 15px;">
+                                {% for error in form.non_field_errors %}
+                                    <span class="form__forget"
+                                          style="color: red !important;"> {{ error }} </span>
+                                {% endfor %}
+                                {% for error in form.password.errors %}
+                                    <span class="form__forget"
+                                          style="color: red !important;"> {{ error }} </span>
+                                {% endfor %}
+                                {% for error in form.username.errors %}
+                                    <span class="form__forget"
+                                          style="color: red !important;"> {{ error }} </span>
+                                {% endfor %}
+                            </div>
+                            {% csrf_token %}
+
+                            <div>
+                                <label for="id_username" class="mb-2">Username</label>
+                                <input type="text" placeholder="Enter Your Username " name="username"
+                                       maxlength="150"
+                                       autocapitalize="none" autocomplete="username" autofocus=""
+                                       required=""
+                                       id="id_username"
+                                       value="{{ form.username.value|default_if_none:'' }}">
+                            </div>
+                            <div>
+                                <label for="id_password1" class="mb-2">Password</label>
+                                <input type="password" name="password" placeholder="Enter Your Password"
+                                       autocomplete="new-password" required="" id="id_password1">
+                            </div>
+
+                            <div class="btn_box ">
+                                <button type="submit">
+                                    Login
+                                </button>
+                            </div>
+
+                            <span class="sign-in-recovery mb-3" style="color: black; font-weight: 600;">Forgot your password?</span>
+
+
+                        </form>
+
+                        <div class="mt-3">
+                            <span class="mb-3" style="color: black; font-weight: 600;">Don't have an account? <a
+                                    href="{% url 'django_registration_register' %}">Sign up Now</a></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="img-box">
+                        <img src="{% static 'images/contact-img.png' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

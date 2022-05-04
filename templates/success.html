@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Success{% endblock title %}
+
+{% block content %}
+    <section class="service_section layout_padding service-detail">
+        <div class="container">
+            <div class="heading_container heading_center">
+                <h2>
+                    Success
+                </h2>
+            </div>
+        </div>
+        <div class="container card">
+            <a href="{% url 'home' %}">Go back home</a>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        window.localStorage.clear()
+        window.location = "{% url 'home' %}"
+    </script>
+{% endblock scripts %}

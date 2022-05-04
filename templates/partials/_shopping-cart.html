@@ -1,0 +1,180 @@
+{% load static %}
+
+{% block styles %}
+    <style>
+        .badge {
+            background-color: red;
+            border-radius: 10px;
+            color: white;
+            display: inline-block;
+            font-size: 12px;
+            line-height: 1;
+            padding: 3px 7px;
+            text-align: center;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .shopping-cart {
+            background: white;
+            width: 320px;
+            position: absolute;
+            top: 30px;
+            right: -10px;
+            border-radius: 3px;
+            padding: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+            -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+            opacity: 0;
+            -webkit-transform-origin: right top 0;
+            -webkit-transform: scale(0);
+            transform-origin: right top 0;
+            transform: scale(0);
+        }
+
+        .shopping-cart.active {
+            z-index: 999;
+            opacity: 1;
+            -webkit-transform-origin: right top 0;
+            -webkit-transform: scale(1);
+            transform-origin: right top 0;
+            transform: scale(1);
+        }
+
+        .shopping-cart .shopping-cart-header {
+            border-bottom: 1px solid #e8e8e8;
+            padding-bottom: 15px;
+        }
+
+        .lighter-text {
+            color: #abb0be;
+        }
+
+        .main-color-text {
+            color: #00c0cb;
+        }
+
+
+        .shopping-cart .shopping-cart-header .shopping-cart-total {
+            float: right;
+        }
+
+        .shopping-cart .shopping-cart-items {
+            padding-top: 20px;
+        }
+
+        .shopping-cart .shopping-cart-items li {
+            margin-bottom: 18px;
+        }
+
+        .shopping-cart .shopping-cart-items img {
+            float: left;
+            margin-right: 12px;
+            max-width: 70px;
+            max-height: 70px;
+        }
+
+        .shopping-cart .shopping-cart-items .item-name {
+            display: block;
+            font-size: 16px;
+        }
+
+        .shopping-cart .shopping-cart-items .item-detail {
+            display: block;
+            font-size: 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .shopping-cart .shopping-cart-items .item-price {
+            color: #00c0cb;
+            margin-right: 8px;
+        }
+
+        .shopping-cart .shopping-cart-items .item-quantity {
+            color: #abb0be;
+        }
+
+        .shopping-cart:after {
+            bottom: 100%;
+            left: 89%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+            border-bottom-color: white;
+            border-width: 8px;
+            margin-left: -8px;
+        }
+
+        .cart-icon {
+            color: #515783;
+            font-size: 24px;
+            margin-right: 7px;
+            float: left;
+        }
+
+        .button {
+            background: #f8770c;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            border-radius: 3px;
+            font-size: 16px;
+            margin: 25px 0 15px 0;
+            text-transform: uppercase;
+        }
+
+        .button:hover {
+            background: #f87f1b;
+        }
+
+        .button i {
+            padding-left: 5px;
+        }
+
+        .clearfix {
+            display: flow-root;
+        }
+
+        .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+{% endblock styles %}
+
+<div class="shopping-cart card">
+    <div class="shopping-cart-header">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="badge" id="badgeHeader">0</span>
+        <div class="shopping-cart-total">
+            <span class="lighter-text">Total:</span>
+            <span id="totalPriceCart" class="main-color-text total">$0</span>
+        </div>
+    </div> <!--end shopping-cart-header -->
+
+    <ul class="shopping-cart-items px-0" id="shoppingCartItems">
+        <span class="item-quantity text-center text-muted">No item yet</span>
+
+        {#        <li class="clearfix">#}
+        {#            <img src="https://www.qispackaging.com.au/getmetafile/fefe4afb-dd4d-495e-ad59-209f29b47052/XMREDTREE.aspx"#}
+        {#                 alt="item1"/>#}
+        {#            <span class="item-name">XMREDTREE</span>#}
+        {#            <span class="item-detail">Full service</span>#}
+        {#            <span class="item-price">$49.50</span>#}
+        {#            <span class="item-quantity">Quantity: 01</span>#}
+        {#        </li>#}
+
+    </ul>
+
+    <a href="#" class="button" id="checkoutBtn">Checkout <i class="fa fa-chevron-right"></i></a>
+</div> <!--end shopping-cart -->

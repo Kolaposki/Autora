@@ -1,0 +1,131 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <title>
+        {% block title %}{% endblock title %} | Autora
+    </title>
+
+
+    {% block styles %}
+    {% endblock styles %}
+</head>
+
+<body>
+
+<!-- header-section start -->
+{% include 'partials/_navbar.html' %}
+<!-- header-section end -->
+
+{% block content %}
+    <!-- content -->
+
+{% endblock %}
+
+<!-- info section -->
+<section class="info_section ">
+    <div class="info_container ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="info_contact ">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <a href="#" class="link-box">
+                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <span>
+                        Louisville, KY 40215
+                      </span>
+                                </a>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="#" class="link-box">
+                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                    <span>
+                        Call +01 1234567890
+                      </span>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#" class="link-box">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>
+                       contact@autora.com
+                      </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5  col-lg-3 mx-auto">
+                    <div class="info_form ">
+                        <form action="#">
+                            <input type="email" placeholder="Enter Your Email"/>
+                            <button>
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="info_logo">
+                <a class="navbar-brand" href="index.html">
+              <span>
+                Autora
+              </span>
+                </a>
+            </div>
+            <div class="social-box">
+                <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="#">Autora</a>
+        </p>
+    </div>
+</footer>
+<!-- footer section -->
+
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% block scripts %}{% endblock scripts %}
+
+</body>
+</html>

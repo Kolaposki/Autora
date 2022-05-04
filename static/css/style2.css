@@ -1,0 +1,54 @@
+.service_section .box .img-box {
+    width: 185px !important;
+}
+
+.price {
+    color: #ff6f3d;
+}
+
+.service_section .box .detail-box a {
+    font-weight: bold;
+    font-size: 22px;
+    color: black !important;
+}
+
+.service-detail img {
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    border-radius: 10px;
+}
+
+span.badge {
+    margin-left: 3px !important;
+    margin-bottom: 5px !important;
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 1;
+    padding: 3px 7px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+
+.service_section .box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.ml-auto {
+    margin-left: auto;
+}
