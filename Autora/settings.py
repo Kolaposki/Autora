@@ -13,6 +13,7 @@ import dj_database_url
 import os
 import sys
 from pathlib import Path
+from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,11 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pq8q@3!f7t=f@k5hkn_5zs(mnb$@v#rmxydg3sehqcdt6yc5py'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['*']
+DEBUG = config('DEBUG', cast=bool)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
 RUNNING_DEVSERVER = (len(sys.argv) > 1 and sys.argv[1] == 'runserver' or sys.argv[1] == 'process_tasks')
 
 # Application definition
@@ -118,6 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -126,11 +129,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'http://localhost:8000/'
 LOGIN_URL = 'http://localhost:8000/users/login/'
 LOGOUT_REDIRECT_URL = 'http://localhost:8000/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -194,3 +197,10 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 
 RAVE_PUBLIC_KEY = 'FLWPUBK_TEST-97a0c15155cefd22c6b906b3c47b3fe7-X'
 RAVE_SECRET_KEY = 'FLWSECK_TEST-c78d05e5f9417f86048dc216cee171c6-X'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': "hopjsqb0n",
+    'API_KEY': "544337962558857",
+    'API_SECRET': "dLGGi9iGbgbLl00A4bnK0efjcuM",
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

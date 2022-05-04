@@ -11,3 +11,4 @@ cloudinary==1.29.0
 django-cloudinary-storage==0.3.0
 django-heroku==0.3.1
 django-ckeditor==6.4.0
+python-decouple==3.6

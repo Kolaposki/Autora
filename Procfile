@@ -1,1 +1,1 @@
-web: gunicorn sivebet.wsgi --log-file -
+web: gunicorn Autora.wsgi --log-file -
