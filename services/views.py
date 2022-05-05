@@ -23,7 +23,7 @@ def checkout(request):
     if request.method == 'GET':
         user_Details = request.user
         context = {"user_Details": user_Details, 'key': settings.RAVE_PUBLIC_KEY}
-        return render(request, 'see.html', context)
+        return render(request, 'checkout.html', context)
 
 
 def service_detail(request, slug):
