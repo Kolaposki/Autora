@@ -14,6 +14,7 @@ import os
 import sys
 from pathlib import Path
 from decouple import config, Csv
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,7 +134,8 @@ LOGOUT_REDIRECT_URL = 'http://localhost:8000/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -195,12 +197,27 @@ CKEDITOR_CONFIGS = {
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-RAVE_PUBLIC_KEY = 'FLWPUBK_TEST-97a0c15155cefd22c6b906b3c47b3fe7-X'
-RAVE_SECRET_KEY = 'FLWSECK_TEST-c78d05e5f9417f86048dc216cee171c6-X'
+# Flutterwave settings
+RAVE_PUBLIC_KEY = config('RAVE_PUBLIC_KEY')
+RAVE_SECRET_KEY = config('RAVE_SECRET_KEY')
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': "hopjsqb0n",
-    'API_KEY': "544337962558857",
-    'API_SECRET': "dLGGi9iGbgbLl00A4bnK0efjcuM",
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+# SECURITY CHECK ==>
+if RUNNING_DEVSERVER:
+    CSRF_COOKIE_SECURE = False  # to avoid transmitting the CSRF cookie over HTTP accidentally.
+    SESSION_COOKIE_SECURE = False  # to avoid transmitting the session cookie over HTTP accidentally.
+else:
+    # Disabled all because of cloudflare 522 error
+    CSRF_COOKIE_SECURE = True  # to avoid transmitting the CSRF cookie over HTTP accidentally.
+    SESSION_COOKIE_SECURE = True  # to avoid transmitting the session cookie over HTTP accidentally.
+    SECURE_BROWSER_XSS_FILTER = True  # prevent Cross-site Scripting (XSS)
+    SECURE_CONTENT_TYPE_NOSNIFF = True  # prevent Cross-site Scripting (XSS)
+
+django_heroku.settings(locals())
